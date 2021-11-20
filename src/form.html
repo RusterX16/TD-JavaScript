@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="js/form.js"></script>
+</head>
+<body>
+<div id="form">
+    <form>
+        <div>
+            <label for="identifiant">Identifiant : </label>
+            <input class="input"
+                   type="text"
+                   value="Saisir un identifiant"
+                   id="identifiant"
+                   name="identifiant"
+                   onfocus="focusField(this)"
+                   onblur="blurField(this); isQuitLong()"
+            />
+            <div class="feedback">
+                Le pseudo est trop court (minimum 6 caractères)
+            </div>
+        </div>
+
+        <div>
+            <label for="mdp">Mot de passe : </label>
+            <input class="input"
+                   type="password"
+                   value=""
+                   id="mdp"
+                   name="mdp"
+                   onfocus="focusField(this)"
+                   onkeypress="blurField(this)"
+            />
+            <div class="feedback"></div>
+        </div>
+
+        <div>
+            <label for="mdp-conf">Confirmer le mot de passe : </label>
+            <input class="input"
+                   type="password"
+                   value=""
+                   id="confirm-mdp"
+                   name="mdp-conf"
+                   onfocus="focusField(this)"
+                   onkeypress="blurField(this); matchPassword()"
+            />
+            <div class="feedback">
+                Le mot de passe ne correspond pas !
+            </div>
+        </div>
+
+        <div>
+            <label for="adresse">Adresse : </label>
+            <input class="input"
+                   type="text"
+                   value="Saisir une adresse postale"
+                   id="adresse"
+                   name="adresse"
+                   onfocus="focusField(this)"
+                   onkeypress="blurField(this)"
+            />
+            <div class="feedback">
+            </div>
+        </div>
+
+        <div>
+            <label for="email">Email : </label>
+            <input class="input"
+                   type="email"
+                   value="Saisir une adresse email"
+                   id="email"
+                   name="email"
+                   onfocus="focusField(this)"
+                   onblur="blurField(this); isValidEmail()"
+            />
+            <div class="feedback">
+                L'email doit contenir un seul '@' !
+            </div>
+        </div>
+
+        <div>
+            <label for="telephone">Telephone</label>
+            <input class="input"
+                   type="text"
+                   value="Saisir un numéro de téléphone"
+                   id="telephone"
+                   name="telephone"
+                   onfocus="focusField(this)"
+                   onblur="blurField(this); isValidPhoneNumber()"
+            />
+            <div class="feedback">
+                Le numéro de téléphone n'est pas valide !
+            </div>
+        </div>
+
+        <input id="button"
+               type="submit"
+               onclick="alert(
+                   !missingInput() ?
+                   allCorrect() ?
+                   'Félicitations' :
+                   'Veuillez remplir les conditions pour chaque champs svp' :
+                   'Merci de compléter tous les champs du formulaire'
+               )"
+        />
+
+        <a href="index.html">
+            <img id="back" src="../res/img/Tokyoship_Home_icon.svg" alt="">
+        </a>
+    </form>
+</div>
+</body>
+</html>
