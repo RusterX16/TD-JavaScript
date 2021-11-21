@@ -27,6 +27,7 @@
 
 .edit, .delete {
     border: black 1px solid;
+    background-color: hotpink;
     height: 20px;
     width: 20px;
     margin: 0 4px;
@@ -44,7 +45,7 @@
     font-family: "Calibri", sans-serif;
     font-size: 32px;
     user-select: none;
-    background-color: darkorange;
+    background-color: yellow;
     border: black 2px solid;
     border-radius: 8px;
     width: 32px;
