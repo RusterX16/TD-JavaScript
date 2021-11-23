@@ -2,7 +2,7 @@ $(document).ready(function() {
     $("#add").click(function() {
         $("#bottombar").before("" +
             "<div class='element'" +
-            "   <label>Question : " +
+            "   <label>Qu : " +
             "       <input disabled type='text' placeholder='Question random' />" +
             "   </label>" +
             "   <p class='answer'></p>" +
@@ -11,7 +11,8 @@ $(document).ready(function() {
             "       <div class='delete' onmouseover='squareButton(this)' onmouseleave='roundButton(this)' onclick='deleteElement(this)'></div>" +
             "   </div>" +
             "</div>"
-        );
+        ).children("label").html("Question " + $(".element").length);
+        console.log($("#bottombar").children("label").html());
         $("#count").html($(".element").length);
     }).hover(function() {
         $(this)
