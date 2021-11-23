@@ -3,7 +3,7 @@ $(document).ready(function() {
         $("#bottombar").before("" +
             "<div class='element'" +
             "   <label>Question : " +
-            "       <input disabled type='text' value='Question random'/>" +
+            "       <input disabled type='text' placeholder='Question random' />" +
             "   </label>" +
             "   <p class='answer'></p>" +
             "   <div class='tools'>" +
@@ -37,7 +37,7 @@ function editElement(field) {
         input.attr("disabled", false).focus();
     } else {
         input.attr("disabled", true).blur();
-        output.html(prompt("Quelle est la réponse à \n" + input.value));
+        output.html(prompt("Quelle est la réponse à \n" + input.html()));
     }
 }
 

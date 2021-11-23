@@ -11,6 +11,10 @@
     border-radius: 24px;
 }
 
+#form > h1 {
+    font-family: "Calibri", sans-serif;
+}
+
 .element {
     display: flex;
     flex-direction: row;
