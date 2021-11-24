@@ -5,14 +5,14 @@ $(document).ready(function() {
         $("#bottombar").before("" +
             "<div class='element'>" +
             "   <label id='tempLabel'>" +
-            "       <input disabled type='text' placeholder='Posez votre question' />" +
+            "       <input disabled type='text' placeholder='Posez votre question' <!--onblur='editElement(this, true)-->'/>" +
             "   </label>" +
             "   <p class='answer'></p>" +
             "   <div class='tools'>" +
-            "       <div class='edit' onmouseover='squareButton(this)' onmouseleave='roundButton(this)' onclick='editElement(this)'>" +
+            "       <div class='edit' onclick='editElement(this, false)'>" +
             "           <img width='auto' height='16px' src='../../res/img/edit.png' alt='edit'/>" +
             "       </div>" +
-            "       <div class='delete' onmouseover='squareButton(this)' onmouseleave='roundButton(this)' onclick='deleteElement(this)'>" +
+            "       <div class='delete' onclick='deleteElement(this)'>" +
             "           <img width='auto' height='16px' src='../../res/img/delete.png' alt='remove'/>" +
             "       </div>" +
             "   </div>" +
@@ -33,10 +33,14 @@ $(document).ready(function() {
             .css("background-color", "#FF8C00")
             .css("transition-duration", ".5s");
     });
+}).keyup(function(event) {
+    if(event.which === 13) {
+
+    }
 });
 
-function editElement(field) {
-    let parent = $(field).parent("div").parent("div");
+function editElement(field, onBlur) {
+    let parent = $(field).parent(onBlur ? "label" : ".tools").parent(".element");
     let input = parent.children("label").children("input");
     let output = parent.children(".answer");
 
@@ -44,23 +48,11 @@ function editElement(field) {
         input.attr("disabled", false).focus();
     } else {
         input.attr("disabled", true).blur();
-        output.html(prompt("Quelle est la réponse à \n" + input.html()));
+        output.html(prompt("Insérez la réponse : \n"));
     }
 }
 
 function deleteElement(field) {
     $(field).parent("div").parent("div").remove();
     $("#count").html($(".element").length);
-}
-
-function squareButton(field) {
-    $(field)
-        .css("border-radius", "0")
-        .css("transition-duration", ".25s");
-}
-
-function roundButton(field) {
-    $(field)
-        .css("border-radius", "32px")
-        .css("transition-duration", ".25s");
 }
