@@ -1,19 +1,25 @@
 $(document).ready(function() {
     $("#add").click(function() {
+        let count = $(".element").length;
+
         $("#bottombar").before("" +
-            "<div class='element'" +
-            "   <label>Qu : " +
-            "       <input disabled type='text' placeholder='Question random' />" +
+            "<div class='element'>" +
+            "   <label id='tempLabel'>" +
+            "       <input disabled type='text' placeholder='Posez votre question' />" +
             "   </label>" +
             "   <p class='answer'></p>" +
             "   <div class='tools'>" +
-            "       <div class='edit' onmouseover='squareButton(this)' onmouseleave='roundButton(this)' onclick='editElement(this)'></div>" +
-            "       <div class='delete' onmouseover='squareButton(this)' onmouseleave='roundButton(this)' onclick='deleteElement(this)'></div>" +
+            "       <div class='edit' onmouseover='squareButton(this)' onmouseleave='roundButton(this)' onclick='editElement(this)'>" +
+            "           <img width='auto' height='16px' src='../../res/img/edit.png' alt='edit'/>" +
+            "       </div>" +
+            "       <div class='delete' onmouseover='squareButton(this)' onmouseleave='roundButton(this)' onclick='deleteElement(this)'>" +
+            "           <img width='auto' height='16px' src='../../res/img/delete.png' alt='remove'/>" +
+            "       </div>" +
             "   </div>" +
             "</div>"
-        ).children("label").html("Question " + $(".element").length);
-        console.log($("#bottombar").children("label").html());
-        $("#count").html($(".element").length);
+        )
+        $("#tempLabel").prepend("Question " + (count + 1) + " : ⠀").removeAttr("id");
+        $("#count").html(count + 1);
     }).hover(function() {
         $(this)
             .css("background-color", "#7CFC00")
@@ -31,7 +37,7 @@ $(document).ready(function() {
 
 function editElement(field) {
     let parent = $(field).parent("div").parent("div");
-    let input = parent.children("input");
+    let input = parent.children("label").children("input");
     let output = parent.children(".answer");
 
     if(input.attr("disabled")) {
@@ -50,13 +56,11 @@ function deleteElement(field) {
 function squareButton(field) {
     $(field)
         .css("border-radius", "0")
-        .css("box-shadow", "0 0 2px 1px")
         .css("transition-duration", ".25s");
 }
 
 function roundButton(field) {
     $(field)
         .css("border-radius", "32px")
-        .css("box-shadow", "0 0 0 0")
         .css("transition-duration", ".25s");
 }
